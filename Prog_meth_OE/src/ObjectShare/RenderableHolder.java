@@ -12,8 +12,8 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	private List<IRenderable> entities; 
 	private Comparator<IRenderable> comparator;
-	public static Image[] images;
-	public static AudioClip[] sounds;
+	public static Image images[];
+	public static AudioClip sounds;
 	
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -28,6 +28,7 @@ public class RenderableHolder {
 	}
 	public void  loadResourse() {
 		//todo 
+		
 	}
 
 	public void add(IRenderable entity) {
