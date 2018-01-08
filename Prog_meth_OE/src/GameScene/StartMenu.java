@@ -3,50 +3,50 @@ package GameScene;
 import javafx.scene.canvas.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import ObjectShare.RenderableHolder;
+import Window.SceneManager;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
+import ObjectShare.RenderableHolder;
 
-public class StartMenu extends Application {
-	@Override
-	public void start(Stage stage){
-		StackPane root = new StackPane();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("OE Story");
+public class StartMenu extends Canvas {
+	
+	public  StartMenu(){
+		super(SceneManager.sceneWidth, SceneManager.sceneHeight);
 		
-		Canvas canvas = new Canvas(600, 600);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		root.getChildren().add(canvas);
+		GraphicsContext gc = this.getGraphicsContext2D();
 		
-		String image_path = "file:res/StartGame.png";
-		drawImage(gc,image_path);
-		drawFilledText(gc);
 		
-		stage.show();
+		drawBackGround(gc);
+		drawTitle(gc);
+		drawButton(gc);
+		//stage.setFullScreen(true);
+		
 	}
 	
-	public void drawImage(GraphicsContext gc, String image_path) {
-		Image javafx_logo = new Image(image_path);
-		gc.drawImage(javafx_logo, 0, 0);
+	public void drawBackGround(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.startManuBackGround,0,0,SceneManager.sceneWidth,SceneManager.sceneHeight);
+//		this.drawImage(RenderableHolder.startManuBackGround, 0, 0,RenderableHolder.startManuBackGround.getWidth(),
+//				RenderableHolder.startManuBackGround.getHeight() ,0,0,SceneManager.Width(),gc.getCanvas().getHeight());
 	}
-	
-	public void drawFilledText(GraphicsContext gc){
+	public void drawButton(GraphicsContext gc) {
+		
+	}
+	public void drawTitle(GraphicsContext gc){
 		gc.setLineWidth(2);
 		gc.setFill(Color.DARKGRAY);
+		//gc.setStroke(Color.BLACK);
 		gc.setStroke(Color.AZURE);
-		Font theFont = Font.font("OE Story",FontWeight.LIGHT,58);
+		Font theFont = Font.font("BROADW",FontWeight.BOLD,58);
 		gc.setFont(theFont);
+		//gc.set
+		gc.fillText("OE Story", gc.getCanvas().getWidth()/2-120, 80);
+		gc.strokeText("OE Story", gc.getCanvas().getWidth()/2-120, 80);
 		
-		gc.fillText("OE Story", 200, 80);
-		
-		gc.setLineWidth(2.0);
-		gc.setFill(Color.DARKGRAY);
+		//theFont = Font.font(arg0)
+	
 	}
+	
 	
 }
